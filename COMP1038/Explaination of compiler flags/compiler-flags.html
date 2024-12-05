@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<title>AE1PGA Lab 2</title>
+
+		<meta name="description" content="AE1PGA Lab 1">
+		<meta name="author" content="Paul Dempster">
+
+	</head>
+
+	<body>
+
+	  <h1>Explanation of compiler flags for GCC</h1>
+ 
+	  <p>In order to compile a single source-file program in C (called <code>foo.c</code> in this example), we will use <code>gcc</code> with the following compiler flags:</p>
+ 
+	  <p style="text-align:center"><code>gcc -std=c99 -lm -Wall -Wformat -Wwrite-strings foo.c -o foo</code></p>
+ 
+	  <p>Here is what each part of the command means:</p>
+ 
+	  <p><code>gcc</code> is the command we are running.  This is the GCC compiler.</p>
+ 
+	  <p><code>-std=c99</code> Use the C99 standard.  Without this, GCC uses C89 with GNU extensions.  Using C99 allows us to use variable declarations in loop initialisers and have less restrictions using variable-length arrays.</p>
+ 
+	  <p>  Valid with C99, invalid in C89:
+	    <code><pre>
+   int x = 0;
+   for(int i = 0; i < 10; i++)
+   {
+      x += i;
+   }
+		      </pre></code>
+	  </p>
+
+	  <p><code>-lm</code> Tells the compiler to link the math functions into the final program.  Without this, trying to use functions in <code>math.h</code> might fail during compilation with linker errors.  If you are not using these functions, including this will make the resulting program slightly larger than necessary but will cause no other problems.
+ 
+<!--	  <p><code>-O2</code> Turns on level 2 optimisations; that is, GCC tries hard to use as many tricks are possible to make your program run faster when it is compiled.  Normally you would not want to do this during development since it can make using a debugger more difficult but (1) we won't be using a debugger and (2) some compiler warnings in GCC are only effective when optimizations are enabled. -->
+ 
+	  <p><code>-Wall</code> Turn on all the "sensible" warnings.  Contrary to the name, this is far from "all" the warnings the GCC is able to give.</p>
+ 
+	  <p><code> -Wformat</code> Warn about common errors using format-strings.  For our purposes, this helps avoid mistakes with printf, scanf, and similar functions.</p>
+	    
+	  <p><code>-Wwrite-strings</code> Warn about attempts to write to literal strings.  Strings which have been declared using string literal syntax cannot be changed and this warns about any attempt to do so, both directly and by forgetting to declare pointers to such strings as <code>const</code>.</p>
+  
+	  <p>   Given this program:
+ <code><pre>
+   #include &lt;stdio.h&gt;
+   int main(int argc, char *argv[])
+   {
+        char *txt = "Hello UNNC";
+        txt[8] = 'U';
+        txt[9] = 'K';
+        printf("%s\n", txt);
+   }
+</pre></code>
+     we get the warning:
+<pre> 
+   zlizpd3@cs-linux tests]$ gcc -std=c99 -O2 -Wall -Wformat -Wwrite-strings gccflags.c -o gccflags
+   gccflags.c: In function ‘main’:
+   gccflags.c:5:16: warning: initialization discards ‘const’ qualifier from pointer target type [enabled by default]
+       char *txt = "Hello UNNC";
+</pre>
+
+   Following the warning and updating the program as follows:
+ <code><pre>
+   #include &lt;stdio.h&gt;
+   int main(int argc, char *argv[])
+   {
+        const char *txt = "Hello UNNC";
+        txt[8] = 'U';
+        txt[9] = 'K';
+        printf("%s\n", txt);
+   }
+ </pre></code>
+   gives an error about the underlying error we were making:
+ <pre>
+   [zlizpd3@cs-linux tests]$ gcc -std=c99 -O2 -Wall -Wformat -Wwrite-strings gccflags.c -o gccflags
+gccflags.c: In function ‘main’:
+gccflags.c:5:4: error: assignment of read-only location ‘*(txt + 8u)’
+    txt[8] = 'U';
+    ^
+gccflags.c:6:4: error: assignment of read-only location ‘*(txt + 9u)’
+    txt[9] = 'K';
+    ^
+ </pre>
+ 
+   <p><code>foo.c</code> is the name of the source code file we are compiling.  If the file is named something else, this is where we change it.  If there are multiple source code files, we list them here separated by spaces.</p>
+ 
+   <p><code>-o foo</code> Tells the compiler to save the final generated program executable with the name <code>foo</code>.  For small programs, it is common to name the program executable after the source file, but you can name it anything you want.  If you omitt the <code>-o</code> flag, GCC will use the default name <code>a.out</code>.  Note that, if there is an error, GCC will not delete any existing executable with the same name.  This means, if you do not read the messages from GCC, you may compile, have an error, then accidentally proceed and run the executable which would be an executable from an earlier, successful compilation, and not the one from the most recent compilation, as you might expect.</p>
+
+   <hr />
+   <i>END</i>
+	</body>
+</html>

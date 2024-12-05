@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>AE1PGA Lab 10</title>
+
+		<meta name="description" content="AE1PGA Lab 10">
+		<meta name="author" content="Paul Dempster">
+
+	</head>
+
+	<body>
+
+	  <h1>AE1PGA Lab 10</h1>
+
+	  <h2>Doubly-linked list</h2>
+	  <p>
+	    Copy your integer list code from last lab, then modify the copied code to implement a doubly-linked list rather than a singly-linked list.  Change the type and function names so they aren't the same as the previous code (for example, by prepending "dll_" for doubly-linked list).  You should also add two new functions:
+	  </p>
+	  <ul>
+	    <li><code>dll_next_element</code> which takes a pointer to a doubly-linked list element and returns a pointer to the next element in the list, or NULL.
+	      
+	    <li><code>dll_prev_element</code> which takes a pointer to a doubly-linked list element and returns a pointer to the previous element in the list, or NULL.
+	  </ul>
+
+	  <p>
+	    After you have done that, also write the equivalent <code>prev_element</code> function for your singely-linked list type (you don't have the <code>prev</code> pointer to help you this time).
+	  </p>
+
+	  <h2>Stack</h2>
+	  <p>
+	    Implement a stack data-type.  It should support the following operations:
+	  </p>
+	  <ul>
+	    <li><code>stack_create</code> which takes no arguments and returns a pointer to a stack data-structure, or NULL on error.
+	    <li><code>stack_push</code> which takes a stack pointer and an integer and adds that number to the top of the stack.
+	    <li><code>stack_pop</code> which takes a stack pointer and removes and returns the value from the top of the stack, or indicates an error if there is no numbers left (you can choose how to implement that error).
+	  </ul>
+
+
+	  <h2>Queue</h2>
+	  <p>
+	    Implement a queue data-type.  It should support the following operations:
+	  </p>
+	  <ul>
+	    <li><code>queue_create</code> which takes no arguments and returns a pointer to a queue data-structure, or NULL on error.
+	    <li><code>queue_enqueue</code> which takes a queue pointer and an integer and adds that number to the back of the queue.
+	    <li><code>queue_dequeue</code> which takes a queue pointer and removes and returns the value from the front of the stack, or indicates an error if there is no numbers left (you can choose how to implement that error).
+	  </ul>
+
+	  
+	  <hr />
+	  <br><i>End</i>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+(1) (Not(x) And Not(y) And Not(z)) Or (Not(x) And y And Not(z)) Or (x And Not(y) And Not(z)) 
+
+【Commutative Law】
+> (Not(x) And Not(z) And Not(y)) Or (Not(x) And Not(z) And y) Or (x And Not(y) And Not(z)) 
+
+【Distributive law】
+> Not(x) And Not(z) => a | Not(y) => b | y=>c | because => a and (b or c) = (a and b) or (a and c)
+
+(2) (Not(x) And Not(z)) And (Not(y) Or y) Or (x And Not(y) And Not(z)) 
+
+【Complement Law】
+> Not(y) Or y = 1  because  x Or (Not(x))=1
+
+(3) (Not(x) And Not(z)) Or (x And Not(y) And Not(z)) 
+
+【Distributive law】
+> Not(z) => a | Not(x) => b | x And Not(y) => c     (b And a) Or (c And a) 
+
+(4) Not(z) And (Not(x) Or (x And Not(y)))
+
+【Distributive law】
+> a Or (b And c) = (a Or b) And (a Or c)
+
+(5) Not(z) And ((Not(x) Or X) And (Not(x) Or Not(y)))
+
+(6) Not(z) And (Not(x) Or Not(y))
+
+
+
+
+
+
+
+

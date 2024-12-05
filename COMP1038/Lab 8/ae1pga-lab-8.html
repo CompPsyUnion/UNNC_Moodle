@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>AE1PGA Lab 8</title>
+
+		<meta name="description" content="AE1PGA Lab 8">
+		<meta name="author" content="Paul Dempster">
+
+	</head>
+
+	<body>
+
+	  <h1>AE1PGA Lab 8</h1>
+
+	  <hr />
+
+	  <h2>Expanding Integer List</h2>
+
+	  <p>This task is to create functions to handle single-linked lists. The file with the name <code>int_list.c(incomplete)</code> contains 
+the definition of a structure which can hold an integer value and a pointer to the next list structure in the list and a few functions, to 
+append, print the list.  Based on the lecture, complete the implementation of such a data-structure with the 
+	  following functions.  In each case, think about what different situations you may have (eg, empty vs non-empty list) and how you
+	  could handle errors.
+	  </p>
+	  <p>Textbook Chapter 12 also covers data-structures in C and might be helpful (be careful of the type definitions though.  
+	  The book likes to <code>typedef</code> pointer types, which I think is confusing because it can make things that are pointers 
+	  look like they are not, and vice-versa).
+	  </p>
+	  <ul>
+	      
+	    <li><code>list_prepend</code> that takes a pointer to a pointer to the first element of a list and a new value, and adds that new value to the start of the list.<br>
+	      <code>int list_prepend(IntList **start, int newval);</code>
+		
+	    <li><code>list_insert</code> that takes a pointer to a pointer to the first element of a list, a new value, and an index, and adds that new value before the n'th element of the list.<br>
+	      <code>int list_insert(IntList **start, int newval, int index);</code>
+	      
+	    <li><code>list_get</code> that takes a pointer to the first element of a list and an index, and returns the the value at that index.<br>
+	      <code>int list_get(IntList *start, int index);</code>
+	      
+	    <li><code>list_contains</code> that takes a pointer to the first element of a list and a target value, and returns true or false if the list does or does not contain that value.<br>
+	      <code>int list_contains(IntList *start, int target);</code>
+
+	    <li><code>list_remove</code> that takes a pointer to a pointer to the first element of a list and an index, and removes that element at that index from the list.<br>
+	      <code>void list_remove(IntList **start, int index);</code>
+
+		  <li><code>list_free</code> that takes a pointer to the first element of a list, and free all allocated memory.<br>
+	      <code>void list_free(IntList *start);</code>
+		  </ul>
+
+	  <hr />
+	  <br><i>End</i>
+	</body>
+</html>
